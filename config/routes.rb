@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  get "users/new"
+
   #Static Pages section
   root :to => 'static_pages#home', as: 'root'
 
