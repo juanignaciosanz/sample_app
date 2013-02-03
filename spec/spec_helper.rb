@@ -38,4 +38,5 @@ RSpec.configure do |config|
 
   # Due tu bug https://github.com/rspec/rspec-rails/issues/360 must cofig Capybara
   config.include Capybara::DSL
+
 end
