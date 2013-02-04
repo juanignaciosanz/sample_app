@@ -8,7 +8,7 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', as: 'contact'
 
   #users
-  get "users/new"
+  resources :users
   match '/signup', to: 'users#new'
 
   # The priority is based upon order of creation:

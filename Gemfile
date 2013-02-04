@@ -17,7 +17,8 @@ gem 'annotate'
 end
 
 group :test do
-gem 'capybara'	, '1.1.2'
+gem 'capybara'	, '1.1.2' # this is important because change in specs made the test fail
+gem 'factory_girl_rails'
 end
 
 group :production do
