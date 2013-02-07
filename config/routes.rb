@@ -8,11 +8,18 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', as: 'contact'
 
   #users
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   match '/signup', to: 'users#new'
 
   #microposts
   resources :microposts, only: [:create, :destroy]
+
+  #relationships
+  resources :relationships, only: [:create, :destroy]
 
   #sessions
   resources :sessions, only: [:new, :create, :destroy]
