@@ -18,6 +18,10 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :password_reset do
+      password_reset_sent_at Time.zone.now
+    end
   end
 
   factory :micropost do

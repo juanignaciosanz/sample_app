@@ -9,6 +9,8 @@ describe "AuthenticationPages" do
 
     it { should have_selector('h1',    text: 'Sign in') }
     it { should have_selector('title', text: 'Sign in') }
+    it { should have_link('Forgot password?', href: new_password_reset_path) }
+    it { should have_link('Sign up now!', href: signup_path) }
   end
 
   describe "signin" do

@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
                     format: {with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, length: { minimum: 6 }, confirmation: true, unless: Proc.new { |a| !a.new_record? && a.password.nil? }
+  validates :password_confirmation, presence: true, unless: Proc.new { |a| !a.new_record? && a.password_confirmation.nil? }
 
   def feed
     Micropost.from_users_followed_by(self)
@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+  def set_password_reset
+    self.password_reset_sent_at = Time.zone.now
   end
 
   private

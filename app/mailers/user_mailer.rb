@@ -12,4 +12,16 @@ class UserMailer < ActionMailer::Base
     @greeting = "Hi! #{@user.name}"
     mail to: "#{@user.name} <rails@bgrantez.me>", subject: @greeting
   end
+  
+  def send_password_reset(user)
+    @user = user
+    @greeting = "Password reset notification for #{@user.name}"
+    mail to: "#{@user.name} <rails@bgrantez.me>", subject: @greeting
+  end
+  
+  def password_changed(user)
+    @user = user
+    @greeting = "Your password has been changed!"
+    mail to: "#{@user.name} <rails@bgrantez.me>", subject: @greeting
+  end
 end
